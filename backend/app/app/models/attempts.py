@@ -12,3 +12,9 @@ class Attempts(Base):
     started_at = Column(TIMESTAMP, default=func.now())
     submitted_at = Column(TIMESTAMP, default=func.now())
     score = Column(Integer)
+    percentage = Column(Integer)
+    status = Column(String)
+
+    user = relationship("Users",back_populates="user_attempts")
+    att_assessment = relationship("Assessments",back_populates="user_assessments")
+    attempt_answer = relationship("Answers",back_populates="answer")

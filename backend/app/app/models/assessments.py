@@ -1,6 +1,7 @@
 from sqlalchemy import Column, DateTime, Integer, String, TIMESTAMP, ForeignKey
 from sqlalchemy.sql import func
 from app.db.base import Base
+from sqlalchemy.orm import relationship
 
 class Assessments(Base):
     __tablename__ = "assessments"
@@ -14,5 +15,8 @@ class Assessments(Base):
     level=Column(String(255))
     Created_At = Column(DateTime, server_default=func.now())
     Updated_At = Column(DateTime, server_default=func.now(), onupdate=func.now())
+
+    que_assessment = relationship("Questions", back_populates="assessment")
+    user_assessments = relationship("Attempts",back_populates="att_assessment")
 
   

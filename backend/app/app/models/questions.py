@@ -12,5 +12,15 @@ class Questions(Base):
     question_type = Column(String(255))
     question_text = Column(JSON)
     question_section = Column(String(255))
-    question_sectionid = Column(Integer,ForeignKey("section.section_id"))
+    section_id = Column(Integer,ForeignKey("section.section_id"))
     correct_option = Column(String(1))
+
+    assessment = relationship("Assessments", back_populates="que_assessment")
+    user_questions = relationship("Options", back_populates="questions")
+    section = relationship("Section",back_populates="question_section")
+    attempt_question = relationship("Answers",back_populates="question")
+
+
+
+
+
