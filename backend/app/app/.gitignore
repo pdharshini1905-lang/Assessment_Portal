@@ -1,0 +1,7 @@
+.env
+portal/
+DEPS/
+*.pem
+__pycache__/
+app/alembic/
+app/alembic.ini

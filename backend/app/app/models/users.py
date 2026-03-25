@@ -1,6 +1,6 @@
-from sqlalchemy import Column, Integer, String, TIMESTAMP
+from sqlalchemy import Column, DateTime, Integer, String, TIMESTAMP
 from sqlalchemy.sql import func
-from app.app.db.base import Base
+from app.db.base import Base
 
 
 class Users(Base):
@@ -9,4 +9,6 @@ class Users(Base):
     user_id = Column(Integer, primary_key=True)
     username = Column(String(100), unique=True)
     password = Column(String(255))
-    created_at = Column(TIMESTAMP, default=func.now())
+    usertype = Column(String(20))
+    Created_At = Column(DateTime, server_default=func.now())
+    Updated_At = Column(DateTime, server_default=func.now(), onupdate=func.now())
